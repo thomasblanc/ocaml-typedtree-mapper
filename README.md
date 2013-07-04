@@ -1,14 +1,19 @@
 ocaml-typedtree-mapper
 ======================
 
-An object doing exhaustive mapping of typedtrees.
+These files provide classes that can go through a typedtree.
 
-To use this object, simply create a new class inheriting Tt_mapper.mapper and call one of the entry functions.
-If you want your class to effectively do something on the tree, you'll have to overide the corresponding method.
-Make sure you still do the mapping on the node's sons.
+Pretty simply, Tt_mapper provides a class "mapper" that does a map and Tt_iter a class "iterator" that iterates along the typedtree. The two files can be compiled and used independantly.
 
-As of right now there is no warranty on the order in wich ther branch will be evaluated.
-You can have a pretty simpler mapping (and also an iterator) in the official compiler libs.
+The branches of the tree are visited in a simple order: the one provided syntactically in the definition of the typedtree (see the source of the OCaml compiler for details) with the exception of sum types in the mapper.
+
+You can have a simpler mapping or iterator in the official compiler libs.
+
+Note that there is neither a META or a building/installing file.
+It's because I don't see that (tiny) work as a real library.
+You can simply copy and compile the files inside your projects.
+
+Compilation needs -I /ocamlsources/typing/ -I /ocamlsources/parsing/ and linking needs ocamlcommon.cma.
 
 It is advised to have a good level in OCaml and compiler internals before using this tool.
 Have fun !
